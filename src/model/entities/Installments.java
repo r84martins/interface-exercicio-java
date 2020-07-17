@@ -1,7 +1,6 @@
 package model.entities;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -23,14 +22,4 @@ public class Installments {
 	public List<Contract> getListInstallments() {
 		return listInstallments;
 	}
-	
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		for (Contract listInstallment : listInstallments) {
-			sb.append(listInstallment + "\n");
-		}
-		return sb.toString();
-	}
-	
 }

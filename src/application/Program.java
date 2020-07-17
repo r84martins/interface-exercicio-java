@@ -11,6 +11,7 @@ import java.util.Scanner;
 import model.entities.Contract;
 import model.entities.ContractNumber;
 import model.entities.Installments;
+import model.services.PayPalTax;
 import model.services.TaxCalculation;
 
 public class Program {
@@ -18,14 +19,13 @@ public class Program {
 	public static void main(String[] args) throws ParseException {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
-		
-		
+				
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		
 		System.out.println("Enter contract data");
 		System.out.print("Number: ");
 		int contractNumber = sc.nextInt();
-		System.out.print("Pickup (dd/MM/yyyy hh:ss): ");
+		System.out.print("Pickup (dd/MM/yyyy): ");
 		sc.nextLine();
 		Date start =  sdf.parse(sc.nextLine());
 		System.out.print("Contract Value: ");
@@ -33,7 +33,7 @@ public class Program {
 		System.out.print("Enter number of installments: ");
 		int numberOfInstallments = sc.nextInt();
 			
-		TaxCalculation tax = new TaxCalculation();
+		TaxCalculation tax = new TaxCalculation(new PayPalTax());
 		List<Contract> lista  = tax.InstallmentsGen(new Contract(start, 
 									                numberOfInstallments, 
 									                new ContractNumber(contractNumber), 

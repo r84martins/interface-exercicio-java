@@ -1,6 +1,6 @@
 package model.services;
 
-public class PayPalTax {
+public class PayPalTax implements TaxService {
 	
 	public double tax(double amount, int installment) {
 		double taxPerPeriod = amount * installment * 0.01;
